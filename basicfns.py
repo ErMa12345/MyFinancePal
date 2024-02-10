@@ -6,7 +6,7 @@ import itertools
 from sklearn.linear_model import LinearRegression
 
 
-# Get average variance of a stock over the past year
+# Get the tuple (mean, variance) of a stock over the past year
 def getMeanVar(ticker):
   ibm_data = yf.Ticker(ticker)
   hist_data = ibm_data.history(period="1y")
@@ -56,8 +56,8 @@ def sumCovariances(portfolio):
 # Get the portfolio variance by calling the sumCovariances function and adding
 def portfolioVariance(portfolio):
   var = sumCovariances(portfolio)
-  for ticker, prop in portfolio.items():
-    var += (prop)**2 * getMeanVar(ticker)[1]
+  for ticker, weight in portfolio.items():
+    var += (weight)**2 * getMeanVar(ticker)[1]
   return var
 
 
@@ -116,6 +116,7 @@ def calculate_r_squared(asset_ticker, market_index_ticker):
   r_squared = model.score(market_data, asset_data)
   return r_squared
 
+
 # Return r squared of a portfolio compared to an index (percentage of the portfolio's movements that can be explained by movements in a benchmark index)
 def calculate_portfolio_r_squared(portfolio, market_index_ticker, period="1y"):
   market_data = yf.Ticker(market_index_ticker).history(period=period)['Close'].pct_change().dropna().values.reshape(
@@ -146,3 +147,10 @@ def generate_portfolio(shares_portfolio):
   portfolio = {ticker: (shares * price) / total_value for ticker, shares in shares_portfolio.items() for price in
                [stock_prices.get(ticker, 0)]}
   return portfolio
+
+
+def portfolio_beta_variance(portfolio):
+  ret = {}
+  for ticker, weight in portfolio.items():
+    ret[ticker] = (weight, calculate_beta(ticker), getMeanVar(ticker)[1])
+  return ret
