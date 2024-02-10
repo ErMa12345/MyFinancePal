@@ -37,23 +37,23 @@ def getPortfolioInfo(portfolio):
     sectors = {}
     for i in portfolio:
         try:
-            if i[1] < 0:
+            if portfolio[i] < 0:
                 result["success"] = False
                 result["error"] = "Invalid stock amount entered"
                 return result
-            curTick = yahooFinance.Ticker(i[0])
+            curTick = yahooFinance.Ticker(i)
             curSector = curTick.info['sector']
             curSector = condensedDic.get(curSector)
             data = curTick.history()
             last_quote = data['Close'].iloc[-1]
             price = last_quote
             if curSector in sectors:
-                sectors[curSector] = sectors[curSector] + price * i[1]
+                sectors[curSector] = sectors[curSector] + price * portfolio[i]
             else:
-                sectors[curSector] = price * i[1]
+                sectors[curSector] = price * portfolio[i]
         except:
             result["success"] = False
-            result["error"] = i[0] + " is not a ticker"
+            result["error"] = i + " is not a ticker"
             return result
     sectorsArr  = []
     moneys = []
@@ -63,8 +63,6 @@ def getPortfolioInfo(portfolio):
     result["data"] = {"Sectors":sectorsArr, "Moneys":moneys}
     return result
 
-dummyPort = [('JPM', 2), ('META', 3), ('MSFT', 20)]
-print(getPortfolioInfo(dummyPort))
 #Testing
 if __name__ == "Main":
     dummyPort = [('JPM', 2), ('META', 3), ('MSFT', 20)]

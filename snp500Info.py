@@ -34,6 +34,7 @@ for curTick in tickers:
         curRow = {}
         risk = calculate_beta(curTick)
         risk = int(10*risk)
+        risk = str(risk)
 
         sector = getSector(curTick)
 
@@ -49,7 +50,33 @@ for curTick in tickers:
     except:
         print("failed on", curTick)
 
-with open("data.json", "w") as json_file:
-    json.dump(tableToStore, json_file, indent=4)
-print("Finished proessing stocks")
+# with open("data.json", "w") as json_file:
+#     json.dump(tableToStore, json_file, indent=4)
+# print("Finished proessing stocks")
 
+from pymongo import MongoClient
+
+# Connect to the MongoDB server
+client = MongoClient("mongodb+srv://ema:ZguNapUP3KZ31mlN@myfinancedata.eqaszft.mongodb.net/?retryWrites=true&w=majority")  # Update with your MongoDB connection string
+
+# Access the database
+db = client.myfinancedata  # Replace 'myfinancedata' with your database name
+
+# Access the collection (similar to a table in relational databases)
+collection = db.recommend  # Replace 'users' with your collection name
+
+# Define the data to be inserted
+user_data = tableToStore
+
+try:
+    # Insert data into the collection
+    result = collection.insert_one(user_data)
+    print("Data inserted successfully with id:", result.inserted_id)
+
+except Exception as e:
+    # Handle any errors that occur during insertion
+    print("Error:", e)
+
+finally:
+    # Close the MongoDB connection
+    client.close()
