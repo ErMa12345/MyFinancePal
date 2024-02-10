@@ -26,32 +26,37 @@ condensedDic = {'Financial Services': condensedSectors[4],
 
 #translate portfolio into total invested into different sectors
 def getPortfolioInfo(portfolio):
+    result = {"success" : True, "data": {}, "error": ""}
     sectors = {}
     for i in portfolio:
-        curTick = yahooFinance.Ticker(i[0])
-        curSector = curTick.info['sector']
-        curSector = condensedDic.get(curSector)
-        data = curTick.history()
-        last_quote = data['Close'].iloc[-1]
-        price = last_quote
-        if curSector in sectors:
-            sectors[curSector] = sectors[curSector] + price
-        else:
-            sectors[curSector] = price
+        try:
+            if i[1] < 0:
+                result["success"] = False
+                result["error"] = "Invalid stock amount entered"
+                return result
+            curTick = yahooFinance.Ticker(i[0])
+            curSector = curTick.info['sector']
+            curSector = condensedDic.get(curSector)
+            data = curTick.history()
+            last_quote = data['Close'].iloc[-1]
+            price = last_quote
+            if curSector in sectors:
+                sectors[curSector] = sectors[curSector] + price * i[1]
+            else:
+                sectors[curSector] = price * i[1]
+        except:
+            result["success"] = False
+            result["error"] = i[0] + " is not a ticker"
+            return result
     sectorsArr  = []
     moneys = []
     for sec,sum in sectors.items():
         sectorsArr.append(sec)
         moneys.append(sum)
-    finalDict = {"Sectors":sectorsArr, "Moneys":moneys}
-    return finalDict
+    result["data"] = {"Sectors":sectorsArr, "Moneys":moneys}
+    return result
 
 #Testing
-dummyPort = [('JPM', 2), ('META', 3), ('MSFT', 20)]
-print(getPortfolioInfo(dummyPort))
-
-
-
-
-
-
+if __name__ == "Main":
+    dummyPort = [('JPM', -2), ('META', 3), ('MSFT', 20)]
+    print(getPortfolioInfo(dummyPort))
