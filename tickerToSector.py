@@ -24,6 +24,13 @@ condensedDic = {'Financial Services': condensedSectors[4],
                     'Utilities': condensedSectors[6]
                     }
 
+#get sector of given ticker
+def getSector(ticker):
+    ticker = yahooFinance.Ticker(ticker)
+    sector = ticker.info['sector']
+    sector = condensedDic.get(sector)
+    return sector
+
 #translate portfolio into total invested into different sectors
 def getPortfolioInfo(portfolio):
     result = {"success" : True, "data": {}, "error": ""}
@@ -56,7 +63,9 @@ def getPortfolioInfo(portfolio):
     result["data"] = {"Sectors":sectorsArr, "Moneys":moneys}
     return result
 
+dummyPort = [('JPM', 2), ('META', 3), ('MSFT', 20)]
+print(getPortfolioInfo(dummyPort))
 #Testing
 if __name__ == "Main":
-    dummyPort = [('JPM', -2), ('META', 3), ('MSFT', 20)]
+    dummyPort = [('JPM', 2), ('META', 3), ('MSFT', 20)]
     print(getPortfolioInfo(dummyPort))
