@@ -1,6 +1,5 @@
 import yfinance as yahooFinance
 
-dummyPort = [('JPM', 2), ('META', 3), ('MSFT', 20)]
 condensedSectors = [
 'Basic Materials', #0
 'Industrials', #1
@@ -46,8 +45,9 @@ def getPortfolioInfo(portfolio):
         moneys.append(sum)
     finalDict = {"Sectors":sectorsArr, "Moneys":moneys}
     return finalDict
-    
 
+#Testing
+dummyPort = [('JPM', 2), ('META', 3), ('MSFT', 20)]
 print(getPortfolioInfo(dummyPort))
 
 
