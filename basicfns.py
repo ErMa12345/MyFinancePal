@@ -3,6 +3,7 @@ import numpy as np
 import yfinance as yf
 import requests
 import itertools
+from sklearn.linear_model import LinearRegression
 
 
 def getMeanVar(ticker):
@@ -76,10 +77,63 @@ def calculate_beta(ticker):
   return beta
 
 
-def calculate_portfolio_betas(portfolio):
+def weighted_betas(portfolio):
   portfolio_betas = {}
   for asset_ticker, weight in portfolio.items():
     beta = calculate_beta(asset_ticker)
-    portfolio_betas[asset_ticker] = beta * weight  # Adjust beta by weight
+    portfolio_betas[asset_ticker] = beta * weight
   sorted_portfolio_betas = dict(sorted(portfolio_betas.items(), key=lambda item: item[1], reverse=True))
   return sorted_portfolio_betas
+
+
+def calculate_portfolio_beta(portfolio):
+  total_portfolio_beta = 0
+  total_portfolio_weight = 0
+
+  for asset_ticker, weight in portfolio.items():
+    beta = calculate_beta(asset_ticker)
+    total_portfolio_beta += beta * weight
+    total_portfolio_weight += weight
+
+  portfolio_beta = total_portfolio_beta / total_portfolio_weight
+  return portfolio_beta
+
+
+def calculate_r_squared(asset_ticker, market_index_ticker):
+  asset_data = yf.Ticker(asset_ticker).history(period="1y")['Close'].pct_change().dropna().values.reshape(-1, 1)
+  market_data = yf.Ticker(market_index_ticker).history(period="1y")['Close'].pct_change().dropna().values.reshape(-1,
+                                                                                                                  1)
+  model = LinearRegression()
+  model.fit(market_data, asset_data)
+  r_squared = model.score(market_data, asset_data)
+  return r_squared
+
+
+def calculate_portfolio_r_squared(portfolio, market_index_ticker, period="1y"):
+  market_data = yf.Ticker(market_index_ticker).history(period=period)['Close'].pct_change().dropna().values.reshape(
+    -1, 1)
+  portfolio_returns = []
+  portfolio_weights = []
+  for asset_ticker, weight in portfolio.items():
+    asset_data = yf.Ticker(asset_ticker).history(period=period)['Close'].pct_change().dropna().values.reshape(-1, 1)
+    portfolio_returns.append(asset_data)
+    portfolio_weights.append(weight)
+  portfolio_returns = np.hstack(portfolio_returns)
+  weighted_portfolio_returns = np.dot(portfolio_returns, portfolio_weights)
+  model = LinearRegression()
+  model.fit(market_data, weighted_portfolio_returns)
+  r_squared = model.score(market_data, weighted_portfolio_returns)
+  return r_squared
+
+
+def generate_portfolio(shares_portfolio):
+  stock_prices = {}
+  for ticker, shares in shares_portfolio.items():
+    data = yf.Ticker(ticker).history(period="1d")
+    if not data.empty:
+      stock_prices[ticker] = data.iloc[-1]['Close']
+  total_value = sum(
+    shares * price for ticker, shares in shares_portfolio.items() for price in [stock_prices.get(ticker, 0)])
+  portfolio = {ticker: (shares * price) / total_value for ticker, shares in shares_portfolio.items() for price in
+               [stock_prices.get(ticker, 0)]}
+  return portfolio
