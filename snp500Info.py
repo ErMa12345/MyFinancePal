@@ -34,6 +34,7 @@ for curTick in tickers:
         curRow = {}
         risk = calculate_beta(curTick)
         risk = int(10*risk)
+        risk = str(risk)
 
         sector = getSector(curTick)
 
