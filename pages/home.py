@@ -1,7 +1,7 @@
 from taipy.gui import notify
 from taipy.gui import Markdown
-import tools.ticketToSector
-import tools.basicfncs
+import tools.tickerToSector
+import tools.basicfns
 
 
 data = {

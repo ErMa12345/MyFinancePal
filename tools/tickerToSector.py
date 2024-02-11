@@ -60,7 +60,7 @@ def getPortfolioInfo(portfolio):
     for sec,sum in sectors.items():
         sectorsArr.append(sec)
         moneys.append(sum)
-    result["data"] = {"Sectors":sectorsArr, "Moneys":moneys}
+    result["data"] = {"Sectors":sectorsArr, "Value":moneys}
     return result
 
 #Testing

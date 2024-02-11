@@ -1,8 +1,8 @@
 import taipy.gui.builder as tgb
 from taipy.gui import notify
-import tools.basicfncs
+import tools.basicfns
 import tools.commonData
-import tools.ticketToSector
+import tools.tickerToSector
 from tools import dbOperations
 import yfinance
 
@@ -53,7 +53,7 @@ def on_button_action(state):
             dbOperations.update_document({"login" : state.login}, userData)
             tools.commonData.userDataGlob = userData["data"]
 
-        test = tools.basicfncs.portfolio_beta_variance(tools.basicfncs.generate_portfolio(tools.commonData.userDataGlob))
+        test = tools.basicfns.portfolio_beta_variance(tools.basicfns.generate_portfolio(tools.commonData.userDataGlob))
         bro = ""
         tableDataR = {
             "Tickers" : [],
@@ -69,7 +69,7 @@ def on_button_action(state):
         
         state.tableData = tableDataR
         if len(tools.commonData.userDataGlob) != 0:
-            check = tools.ticketToSector.getPortfolioInfo(tools.commonData.userDataGlob)
+            check = tools.tickerToSector.getPortfolioInfo(tools.commonData.userDataGlob)
             print(check)
             if check["success"] == True:
                 state.data = check["data"]
