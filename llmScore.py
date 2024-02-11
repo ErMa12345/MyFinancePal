@@ -1,7 +1,7 @@
 import openai
 from emotionDetection import EmotionalRiskCalculator
 
-api_key = "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"
+api_key = "key"
 
 def score_response(original_response):
     try:
