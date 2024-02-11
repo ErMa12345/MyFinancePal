@@ -1,0 +1,631 @@
+{
+    "4": {
+        "Industrials": [
+            "MMM",
+            "CPRT",
+            "DE",
+            "DOV",
+            "EMR",
+            "FDX",
+            "HWM",
+            "JBHT",
+            "NDSN",
+            "RHI",
+            "LUV",
+            "TT",
+            "UPS",
+            "VLTO",
+            "XYL"
+        ],
+        "Technology and Communication": [
+            "ACN",
+            "APH",
+            "AAPL",
+            "CDW",
+            "CHTR",
+            "FICO",
+            "FIS",
+            "FLT",
+            "FTV",
+            "IT",
+            "GEN",
+            "HPQ",
+            "IPG",
+            "KEYS",
+            "MSFT",
+            "NWSA",
+            "NWS",
+            "ORCL",
+            "PTC",
+            "STX",
+            "TTWO",
+            "TEL",
+            "TDY",
+            "TXN",
+            "DIS"
+        ],
+        "Healthcare": [
+            "A",
+            "GEHC",
+            "MTD",
+            "MRNA",
+            "TFX",
+            "WAT"
+        ],
+        "Financial Services": [
+            "AIG",
+            "BAC",
+            "BK",
+            "C",
+            "GS",
+            "MKTX",
+            "MET",
+            "MCO",
+            "PFG",
+            "PRU",
+            "SPGI",
+            "WFC"
+        ],
+        "Basic Materials": [
+            "APA",
+            "DVN",
+            "DD",
+            "EMN",
+            "IFF",
+            "MLM",
+            "MOS",
+            "PPG",
+            "SHW",
+            "VMC"
+        ],
+        "Consumer Goods": [
+            "AVY",
+            "BALL",
+            "BBWI",
+            "BBY",
+            "BKNG",
+            "BWA",
+            "DHI",
+            "EBAY",
+            "GPC",
+            "HLT",
+            "HD",
+            "LVS",
+            "LEN",
+            "LOW",
+            "NKE",
+            "NVR",
+            "PHM",
+            "RL",
+            "TPR"
+        ],
+        "Real estate and utilities": [
+            "CPT",
+            "CSGP",
+            "EQIX",
+            "ESS",
+            "EXR",
+            "FRT",
+            "PEAK",
+            "HST",
+            "INVH",
+            "IRM",
+            "KIM",
+            "MAA",
+            "SBAC",
+            "SPG",
+            "UDR",
+            "WY"
+        ]
+    },
+    "3": {
+        "Industrials": [
+            "AOS",
+            "AME",
+            "ADP",
+            "AXON",
+            "BA",
+            "CTAS",
+            "CSX",
+            "CMI",
+            "EXPD",
+            "FAST",
+            "GE",
+            "HON",
+            "HUBB",
+            "HII",
+            "IEX",
+            "ITW",
+            "J",
+            "NSC",
+            "OTIS",
+            "PCAR",
+            "PAYX",
+            "SNA",
+            "TXT",
+            "TDG",
+            "UNP",
+            "WAB",
+            "GWW"
+        ],
+        "Basic Materials": [
+            "APD",
+            "BKR",
+            "CTVA",
+            "CTRA",
+            "FANG",
+            "DOW",
+            "ECL",
+            "EOG",
+            "EQT",
+            "FMC",
+            "HAL",
+            "HES",
+            "LYB",
+            "MRO",
+            "OKE",
+            "SLB",
+            "TRGP"
+        ],
+        "Technology and Communication": [
+            "AKAM",
+            "BR",
+            "CTSH",
+            "CMCSA",
+            "GLW",
+            "EA",
+            "FFIV",
+            "FI",
+            "FOXA",
+            "FOX",
+            "GRMN",
+            "JKHY",
+            "LDOS",
+            "MSI",
+            "NTAP",
+            "OMC",
+            "ROP",
+            "VRSN"
+        ],
+        "Consumer Goods": [
+            "AMCR",
+            "BG",
+            "DPZ",
+            "LKQ",
+            "MAR",
+            "MNST",
+            "PKG",
+            "ROST",
+            "SBUX",
+            "TGT",
+            "TJX",
+            "TSCO",
+            "WRK"
+        ],
+        "Real estate and utilities": [
+            "AMT",
+            "AVB",
+            "CEG",
+            "CCI",
+            "EQR",
+            "NRG",
+            "PSA",
+            "REG",
+            "VTR",
+            "VICI",
+            "WELL"
+        ],
+        "Healthcare": [
+            "BIO",
+            "TECH",
+            "COO",
+            "DHR",
+            "DVA",
+            "XRAY",
+            "DXCM",
+            "EW",
+            "HCA",
+            "PODD",
+            "RMD",
+            "RVTY",
+            "STE",
+            "TMO",
+            "UHS",
+            "VTRS",
+            "WBA",
+            "WST",
+            "ZTS"
+        ],
+        "Financial Services": [
+            "BRO",
+            "CINF",
+            "FDS",
+            "HIG",
+            "ICE",
+            "JPM",
+            "MA",
+            "NDAQ",
+            "V"
+        ]
+    },
+    "2": {
+        "Healthcare": [
+            "ABT",
+            "AMGN",
+            "BAX",
+            "BDX",
+            "BIIB",
+            "CI",
+            "CVS",
+            "ELV",
+            "LLY",
+            "GILD",
+            "HSIC",
+            "HOLX",
+            "INCY",
+            "LH",
+            "MDT",
+            "MOH",
+            "SYK",
+            "VRTX",
+            "ZBH"
+        ],
+        "Financial Services": [
+            "AFL",
+            "ALL",
+            "AON",
+            "ACGL",
+            "AJG",
+            "AIZ",
+            "EG",
+            "GL",
+            "L",
+            "MMC",
+            "TRV",
+            "WRB",
+            "WTW"
+        ],
+        "Real estate and utilities": [
+            "LNT",
+            "AEP",
+            "AWK",
+            "CNP",
+            "D",
+            "EIX",
+            "ETR",
+            "EVRG",
+            "ES",
+            "EXC",
+            "FE",
+            "NEE",
+            "NI",
+            "PCG",
+            "PPL",
+            "PEG",
+            "O",
+            "SRE"
+        ],
+        "Consumer Goods": [
+            "MO",
+            "ADM",
+            "AZO",
+            "CMG",
+            "STZ",
+            "COST",
+            "DRI",
+            "DLTR",
+            "IP",
+            "KVUE",
+            "LW",
+            "MCD",
+            "ORLY",
+            "PM",
+            "ROL",
+            "SYY",
+            "ULTA",
+            "YUM"
+        ],
+        "Basic Materials": [
+            "CF",
+            "CVX",
+            "COP",
+            "XOM",
+            "KMI",
+            "LIN",
+            "MPC",
+            "NEM",
+            "OXY",
+            "PSX",
+            "PXD",
+            "VLO",
+            "WMB"
+        ],
+        "Industrials": [
+            "CHRW",
+            "GD",
+            "LHX",
+            "RTX",
+            "VRSK"
+        ],
+        "Technology and Communication": [
+            "CSCO",
+            "IBM",
+            "JNPR"
+        ]
+    },
+    "0": {
+        "Healthcare": [
+            "ABBV",
+            "COR",
+            "HUM",
+            "MCK"
+        ],
+        "Consumer Goods": [
+            "CPB",
+            "CHD",
+            "GIS",
+            "K",
+            "KR",
+            "SJM"
+        ]
+    },
+    "6": {
+        "Technology and Communication": [
+            "ADBE",
+            "AMAT",
+            "ANET",
+            "ADSK",
+            "AVGO",
+            "DAY",
+            "EPAM",
+            "FSLR",
+            "INTU",
+            "KLAC",
+            "LRCX",
+            "MCHP",
+            "NXPI",
+            "ON",
+            "PARA",
+            "NOW",
+            "TER",
+            "UBER",
+            "ZBRA"
+        ],
+        "Consumer Goods": [
+            "ABNB",
+            "AMZN",
+            "KMX",
+            "EXPE",
+            "MGM",
+            "MHK",
+            "VFC"
+        ],
+        "Industrials": [
+            "AAL"
+        ],
+        "Real estate and utilities": [
+            "BXP"
+        ],
+        "Basic Materials": [
+            "CE",
+            "FCX"
+        ],
+        "Financial Services": [
+            "SCHW",
+            "FITB",
+            "HBAN",
+            "IVZ",
+            "MTB",
+            "PYPL",
+            "RF"
+        ]
+    },
+    "7": {
+        "Technology and Communication": [
+            "AMD",
+            "META",
+            "WBD"
+        ],
+        "Basic Materials": [
+            "ALB"
+        ],
+        "Healthcare": [
+            "ALGN"
+        ],
+        "Financial Services": [
+            "BX",
+            "CFG",
+            "TFC",
+            "USB"
+        ],
+        "Industrials": [
+            "BLDR",
+            "URI"
+        ],
+        "Consumer Goods": [
+            "ETSY",
+            "NCLH"
+        ]
+    },
+    "5": {
+        "Real estate and utilities": [
+            "AES",
+            "ARE",
+            "CBRE",
+            "DLR",
+            "PLD"
+        ],
+        "Industrials": [
+            "ALLE",
+            "CARR",
+            "CAT",
+            "DAL",
+            "ETN",
+            "EFX",
+            "GPN",
+            "IR",
+            "JCI",
+            "MAS",
+            "ODFL",
+            "PH",
+            "PNR",
+            "POOL",
+            "PWR",
+            "ROK",
+            "SWK",
+            "UAL"
+        ],
+        "Technology and Communication": [
+            "GOOGL",
+            "GOOG",
+            "ADI",
+            "ANSS",
+            "CDNS",
+            "FTNT",
+            "HPE",
+            "INTC",
+            "JBL",
+            "LYV",
+            "MTCH",
+            "MU",
+            "NFLX",
+            "PANW",
+            "PAYC",
+            "QRVO",
+            "QCOM",
+            "CRM",
+            "SWKS",
+            "SNPS",
+            "TRMB",
+            "TYL",
+            "WDC"
+        ],
+        "Financial Services": [
+            "AXP",
+            "AMP",
+            "BLK",
+            "COF",
+            "DFS",
+            "BEN",
+            "MS",
+            "MSCI",
+            "NTRS",
+            "PNC",
+            "RJF",
+            "STT",
+            "SYF",
+            "TROW"
+        ],
+        "Consumer Goods": [
+            "APTV",
+            "EL",
+            "F",
+            "GM",
+            "HAS",
+            "LULU",
+            "RCL",
+            "WHR",
+            "WYNN"
+        ],
+        "Healthcare": [
+            "CTLT",
+            "CRL",
+            "IDXX",
+            "ILMN",
+            "ISRG",
+            "IQV"
+        ],
+        "Basic Materials": [
+            "NUE",
+            "STLD"
+        ]
+    },
+    "1": {
+        "Real estate and utilities": [
+            "AEE",
+            "ATO",
+            "CMS",
+            "ED",
+            "DTE",
+            "DUK",
+            "PNW",
+            "SO",
+            "WEC",
+            "XEL"
+        ],
+        "Technology and Communication": [
+            "T",
+            "TMUS",
+            "VZ"
+        ],
+        "Healthcare": [
+            "BSX",
+            "BMY",
+            "CAH",
+            "CNC",
+            "JNJ",
+            "MRK",
+            "PFE",
+            "DGX",
+            "REGN",
+            "UNH"
+        ],
+        "Financial Services": [
+            "CBOE",
+            "CB",
+            "CME",
+            "PGR"
+        ],
+        "Consumer Goods": [
+            "CLX",
+            "KO",
+            "CL",
+            "CAG",
+            "DG",
+            "HSY",
+            "HRL",
+            "KDP",
+            "KMB",
+            "KHC",
+            "MKC",
+            "TAP",
+            "MDLZ",
+            "PEP",
+            "PG",
+            "TSN",
+            "WMT"
+        ],
+        "Industrials": [
+            "LMT",
+            "NOC",
+            "RSG",
+            "WM"
+        ]
+    },
+    "9": {
+        "Consumer Goods": [
+            "CZR"
+        ],
+        "Financial Services": [
+            "CMA",
+            "ZION"
+        ]
+    },
+    "8": {
+        "Consumer Goods": [
+            "CCL",
+            "TSLA"
+        ],
+        "Technology and Communication": [
+            "ENPH",
+            "MPWR",
+            "NVDA"
+        ],
+        "Industrials": [
+            "GNRC"
+        ],
+        "Financial Services": [
+            "KEY"
+        ]
+    }
+}

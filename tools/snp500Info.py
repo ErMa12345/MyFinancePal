@@ -3,8 +3,8 @@ import bs4 as bs
 import requests
 import datetime
 from datetime import datetime as dt
-from tickerToSector import getSector
-from basicfns import calculate_beta
+from tools.tickerToSector import getSector
+from tools.basicfns import calculate_beta
 import json
 
 """

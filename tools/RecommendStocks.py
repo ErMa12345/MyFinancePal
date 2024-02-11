@@ -1,5 +1,5 @@
-from basicfns import generate_portfolio
-from tickerToSector import getSector
+from tools.basicfns import generate_portfolio
+from tools.tickerToSector import getSector
 import yfinance as yahooFinance
 from pymongo import MongoClient
 import random
