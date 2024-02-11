@@ -7,6 +7,7 @@ from nltk.tree import Tree
 from tools.finance_keywords import finance_keywords
 
 
+
 class EmotionalRiskCalculator:
     def __init__(self):
         self.scores = []
@@ -34,16 +35,16 @@ class EmotionalRiskCalculator:
         additional_keywords = [word for word in words if word.lower() in finance_keywords]
 
         # Calculate specificity score
-        specificity_score = (len(named_entities) + (3.0 *len(additional_keywords) + 2.0 * len(numeric_entities))) / len(words) if words else 0
+        specificity_score = (len(named_entities) + (4.0 *len(additional_keywords) + 2.0 * len(numeric_entities))) / len(words) if words else 0
        # print("Before: ", specificity_score)
 
         # Calculate complexity score
         complexity_score = 0.5 if has_complex_structure else 0
 
         # Set a minimum response length threshold for heavy penalization
-        min_response_length = 20  # Adjust the threshold as needed
+        min_response_length = 10  # Adjust the threshold as needed
 
-        # Adjust specificity score based on response length
+        # Adjust specificty score based on response length
         if len(words) < min_response_length:
             specificity_score *= 0.01  # Heavily penalize specificity for short responses
         else:
@@ -82,17 +83,18 @@ class EmotionalRiskCalculator:
         return min(percentile, 100)
 
 
-# Example usage:
-calculator = EmotionalRiskCalculator()
+if __name__ == "__main__":
+    # Example usage:
+    calculator = EmotionalRiskCalculator()
 
 
-# Process free-response question answers
-print("Free Response question answer: ", calculator.process_free_response_question('I am confident in this stock because I have researched different articles'))
-print("Free Response question answer 2: ", calculator.process_free_response_question('In a sun-dappled meadow, a mischievous fox with a gleam in its eye dashes playfully, evading the watchful gaze of a loyal dog. With a graceful leap, the fox vaults effortlessly over its canine friend, leaving behind a trail of laughter and friendship under the golden sky.'))
-print("Free Response question answer 3: ", calculator.process_free_response_question('I have spent 5 days tracking fundamentals ad researching articles andd talking to professionals. This is an amazong stock andd will go up with the performance of the earninggs calls next week.'))
-print("Free Response question answer 4: ", calculator.process_free_response_question('I selected this particular stock, ABC Corp, for several reasons. Firstly, after conducting thorough research on its financial statements, I observed consistent revenue growth over the past few year of 1000 percent. Indicating a strong and stable financial performance. Additionally, the company has a low debt-to-equity ratio of 0.98, signifying a healthy balance sheet and reduced financial risk.'))
-print("Free Response question answer 5: ", calculator.process_free_response_question('In the shadows of cyberspace, a cunning scammer orchestrates a devious plan, breaching the digital defenses of Robinhood, the famed trading platform. With deft keystrokes, they manipulate accounts, siphoning wealth from unsuspecting investors. Panic ensues as portfolios vanish into the digital abyss, leaving behind a trail of betrayal and shattered dreams in their wake.'))
+    # Process free-response question answers
+    print("Free Response question answer: ", calculator.process_free_response_question('I am confident in this stock because I have researched different articles'))
+    print("Free Response question answer 2: ", calculator.process_free_response_question('In a sun-dappled meadow, a mischievous fox with a gleam in its eye dashes playfully, evading the watchful gaze of a loyal dog. With a graceful leap, the fox vaults effortlessly over its canine friend, leaving behind a trail of laughter and friendship under the golden sky.'))
+    print("Free Response question answer 3: ", calculator.process_free_response_question('I have spent 5 days tracking fundamentals ad researching articles andd talking to professionals. This is an amazong stock andd will go up with the performance of the earninggs calls next week.'))
+    print("Free Response question answer 4: ", calculator.process_free_response_question('I selected this particular stock, ABC Corp, for several reasons. Firstly, after conducting thorough research on its financial statements, I observed consistent revenue growth over the past few year of 1000 percent. Indicating a strong and stable financial performance. Additionally, the company has a low debt-to-equity ratio of 0.98, signifying a healthy balance sheet and reduced financial risk.'))
+    print("Free Response question answer 5: ", calculator.process_free_response_question('In the shadows of cyberspace, a cunning scammer orchestrates a devious plan, breaching the digital defenses of Robinhood, the famed trading platform. With deft keystrokes, they manipulate accounts, siphoning wealth from unsuspecting investors. Panic ensues as portfolios vanish into the digital abyss, leaving behind a trail of betrayal and shattered dreams in their wake.'))
 
-# Calculate and print the emotional risk percentile
-# emotional_risk_percentile = calculator.calculate_emotional_risk_percentile()
-# print(f"Emotional Risk Percentile: {emotional_risk_percentile}")
+    # Calculate and print the emotional risk percentile
+    # emotional_risk_percentile = calculator.calculate_emotional_risk_percentile()
+    # print(f"Emotional Risk Percentile: {emotional_risk_percentile}")
