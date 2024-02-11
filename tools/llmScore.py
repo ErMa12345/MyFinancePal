@@ -1,8 +1,14 @@
 import openai
 from tools.emotionDetection import EmotionalRiskCalculator
+import os
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the MongoDB URI from the environment variables
 # Set your OpenAI API key as an environment variable
-api_key = "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"
+api_key = os.getenv("gptkey")
 
 def score_response(original_response):
     try:

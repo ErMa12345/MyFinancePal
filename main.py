@@ -52,4 +52,4 @@ pages = {
 if __name__ == "__main__":
     gui = Gui(pages=pages, css_file="styles.css")
     dynamic_content = gui.add_partial('')
-    gui.run(use_reloader=True, port=5006, title="MyFinancePal")
+    gui.run(use_reloader=True, port=5008, title="MyFinancePal")
