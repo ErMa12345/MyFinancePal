@@ -4,6 +4,7 @@ import yfinance as yf
 import requests
 import itertools
 from sklearn.linear_model import LinearRegression
+import tools.tickerToSector
 
 
 # Get the tuple (mean, variance) of a stock over the past year
@@ -149,8 +150,47 @@ def generate_portfolio(shares_portfolio):
   return portfolio
 
 
-def portfolio_beta_variance(portfolio):
+def beta_variances(portfolio):
   ret = {}
   for ticker, weight in portfolio.items():
     ret[ticker] = (weight, calculate_beta(ticker), getMeanVar(ticker)[1])
   return ret
+
+
+def get_analysis_data(portfolio):
+  var = portfolioVariance(portfolio)
+  beta = calculate_portfolio_beta(portfolio)
+  r2 = calculate_portfolio_r_squared(portfolio, "VOO")
+  return (var, beta, r2)
+
+
+def suggestIndexFromTicker(ticker, portfolio):
+  indexes_map = {'Basic Materials': "VMIAX", 'Industrials': "XLI", 'Consumer Goods': "XLP", 'Healthcare': "IXJ", 'Financial Services': "XLF", 'Technology and Communication': "IXN", 'Real estate and utilities': "XLRE"}
+  index = indexes_map[tools.tickerToSector.getSector(ticker)]
+  r = calculate_r_squared(ticker, index)
+  var1 = portfolioVariance(portfolio)
+  newPortfolio = portfolio.copy()
+  rem = newPortfolio.pop(ticker)
+  newPortfolio[index] = rem
+  var2 = portfolioVariance(newPortfolio)
+  beta1 = calculate_beta(ticker)
+  beta2 = calculate_beta(index)
+  return (index, r, var1, var2, beta1, beta2)
+
+
+def suggestIndex(portfolio):
+  ticker = ""
+  index = ""
+  best = 1
+  r = 1
+  var1 = 1
+  var2 = 1
+  beta1 = 1
+  beta2 = 1
+  for ticker0, weight in portfolio.items():
+    index0, r0, var10, var20, beta10, beta20 = suggestIndexFromTicker(ticker0, portfolio)
+    if (var20 - var10) < best:
+      best = var20 - var10
+      ticker = ticker0
+      index, r, var1, var2, beta1, beta2 = index0, r0, var10, var20, beta10, beta20
+  return (ticker, index, r, var1, var2, beta1, beta2)

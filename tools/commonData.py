@@ -1,3 +1,4 @@
 
 
 userDataGlob = {}
+portfolio = {}

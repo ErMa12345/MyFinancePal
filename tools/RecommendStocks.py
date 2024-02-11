@@ -1,6 +1,5 @@
 from tools.basicfns import generate_portfolio
 from tools.tickerToSector import getSector
-import yfinance as yahooFinance
 from pymongo import MongoClient
 import random
 
@@ -47,7 +46,13 @@ def giveStocks(portfolio, desiredRisk):
     message = ''
     ret = {'Message':message, 'Possible Stocks':possibleStocks}
     if len(uninvestedSectors) > 0:
-        message = "It seems your portfolio is not as diversified as it could be, here are some stocks and their associated risk that you could look into!"
+        uninvested = ""
+        for i in range(len(uninvestedSectors)):
+            if i == len(uninvestedSectors) - 1:
+                uninvested += "and " + uninvestedSectors[i] + "."
+            else:
+                uninvested += uninvestedSectors[i] + ", "
+        message = "It seems your portfolio is not as diversified as it could be, here are some stocks and their associated risk that you could look into in the following industries: " + uninvested
         for risk in riskDict:
             if int(risk) <= desiredRisk:
                 for sector in riskDict[str(risk)]:
@@ -58,7 +63,7 @@ def giveStocks(portfolio, desiredRisk):
                             possibleStocks[risk] = riskDict[risk][sector]
     else:
         minWeight = min(weightedSectors, key=weightedSectors.get)
-        message = "Your portfolio is pretty diverse, but there might be some minor imbalances, here are some recommendations and their risk level!"
+        message = "Your portfolio is pretty diverse, but there might be some minor imbalances as you don't have much in " + minWeight + ", here are some recommendations and their risk level!"
         for risk in riskDict:
             if int(risk) <= desiredRisk:
                 for sector in riskDict[str(risk)]:
@@ -78,5 +83,5 @@ def giveStocks(portfolio, desiredRisk):
     ret['Possible Stocks'] = possibleStocks
     return ret
     
-
-print(giveStocks(dummyPort2, 4))
+if __name__ == "__main__":
+    print(giveStocks(dummyPort2, 3))
