@@ -4,7 +4,7 @@ import numpy
 from nltk import pos_tag, word_tokenize, ne_chunk
 from nltk.corpus import stopwords
 from nltk.tree import Tree
-from finance_keywords import finance_keywords
+from tools.finance_keywords import finance_keywords
 
 
 class EmotionalRiskCalculator:
