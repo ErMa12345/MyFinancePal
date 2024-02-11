@@ -3,6 +3,15 @@ from tools.tickerToSector import getSector
 from pymongo import MongoClient
 import random
 
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the MongoDB URI from the environment variables
+mongodb_uri = os.getenv("MONGODB_URI")
+
 dummyPort = {'SHW': 1, 'CAT': 6, 'BEN': 20, 'ET':12, 'LOW': 5, 'CSCO': 3, 'CMCSA':6, 'ABT':4, 'ABT':2, 
              'CL':4, 'ATO':9, 'ESS':3}
 dummyPort2 = {'MSFT': 2, 'AMZN':3}
@@ -30,7 +39,7 @@ def giveStocks(portfolio, desiredRisk):
     
 
     # Connect to the MongoDB server
-    client = MongoClient("mongodb+srv://ema:ZguNapUP3KZ31mlN@myfinancedata.eqaszft.mongodb.net/?retryWrites=true&w=majority") 
+    client = MongoClient(mongodb_uri) 
 
     # Access the database
     db = client.myfinancedata  # Replace 'myfinancedata' with your database name
