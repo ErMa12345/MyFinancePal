@@ -29,12 +29,20 @@ tickers = [s.replace('\n', '') for s in tickers]
 
 tableToStore = {}
 #get sector and individual stock voalitily risk
+maxRisk = 0
+for curTick in tickers:
+    try:
+        risk = calculate_beta(curTick)
+        maxRisk = max(risk, maxRisk)
+    except:
+        print("fails on", curTick)
+
 for curTick in tickers:
     try:
         curRow = {}
         risk = calculate_beta(curTick)
-        risk = int(10*risk)
-        risk = str(risk)
+        risk = int(10*risk/maxRisk)
+        risk = str(risk+1)
 
         sector = getSector(curTick)
 
